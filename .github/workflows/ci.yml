@@ -61,6 +61,7 @@ jobs:
             rubocop-${{ runner.os }}-${{ env.DEPENDENCIES_HASH }}-
 
       - name: Lint code for consistent style
+        run: bundle install
         run: bin/rubocop -f github
 
   test:
