@@ -1,4 +1,5 @@
 # fly.toml app configuration file generated for treasure-hunt on 2026-03-07T17:01:44+01:00
+
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -32,4 +33,4 @@ console_command = '/rails/bin/rails console'
 [[vm]]
   memory = '1gb'
   cpus = 1
-  memory_mb = 1024
+  memory_mb = 256
