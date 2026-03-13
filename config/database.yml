@@ -84,7 +84,26 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   primary: &primary_production
+#     <<: *default
+#     database: treasure_hunt_production
+#     username: treasure_hunt
+#     password: <%= ENV["TREASURE_HUNT_DATABASE_PASSWORD"] %>
+#   cache:
+#     <<: *primary_production
+#     database: treasure_hunt_production_cache
+#     migrations_paths: db/cache_migrate
+#   queue:
+#     <<: *primary_production
+#     database: treasure_hunt_production_queue
+#     migrations_paths: db/queue_migrate
+#   cable:
+#     <<: *primary_production
+#     database: treasure_hunt_production_cable
+#     migrations_paths: db/cable_migrate
 
+# config/database.yml
 production:
   primary:
     <<: *default
