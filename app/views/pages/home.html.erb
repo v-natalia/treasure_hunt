@@ -1,2 +1,119 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# app/views/pages/home.html.erb %>
+
+<% content_for :title, "Hunt — Turn forgotten things into hidden treasures" %>
+
+<%# ── Decorative background ── %>
+<div class="bg-circle"></div>
+
+<%# ── Hero ── %>
+<section class="hero">
+
+  <p class="hero-eyebrow">Release · Share · Hunt</p>
+
+  <h1 class="hero-title">
+    Turn forgotten things<br>into
+    <em>hidden treasures.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Des objets qui dorment chez vous peuvent changer la journée de quelqu'un.
+    Donnez-leur une seconde vie — simplement, localement.
+  </p>
+
+  <%# ── Filter bar ── %>
+  <div class="filter-bar">
+
+    <div class="bar-mode">
+      <button class="mode-btn on" onclick="setMode(this)">
+        <i class="fa-solid fa-hand-holding-heart"></i> Je donne un objet
+      </button>
+      <button class="mode-btn" onclick="setMode(this)">
+        <i class="fa-solid fa-compass"></i> Je cherche un trésor
+      </button>
+    </div>
+
+    <div class="bar-divider"></div>
+
+    <div class="bar-row">
+      <div class="bar-field">
+        <p class="bar-field-label">
+          <i class="fa-solid fa-star-half-stroke"></i> État
+        </p>
+        <div class="pill-row">
+          <button class="pill on" onclick="setPill(this)">Tous</button>
+          <button class="pill"    onclick="setPill(this)">Neuf</button>
+          <button class="pill"    onclick="setPill(this)">Très bon</button>
+          <button class="pill"    onclick="setPill(this)">Bon</button>
+          <button class="pill"    onclick="setPill(this)">Correct</button>
+        </div>
+      </div>
+
+      <div class="bar-sep"></div>
+
+      <div class="bar-field">
+        <p class="bar-field-label">
+          <i class="fa-solid fa-location-dot"></i> Distance
+        </p>
+        <div class="dist-wrap">
+          <input type="range" class="dist-slider"
+            min="1" max="30" value="5" id="dist"
+            oninput="
+              document.getElementById('dv').textContent = this.value + ' km';
+              const p = (this.value - 1) / 29 * 100;
+              this.style.background = 'linear-gradient(to right, #2a4a36 ' + p + '%, #e8dfc8 ' + p + '%)';
+            ">
+          <span class="dist-val" id="dv">5 km</span>
+        </div>
+      </div>
+
+      <button class="bar-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </div>
+
+  <%# ── Categories strip ── %>
+  <div class="cats-strip">
+    <button class="cat-pill on" onclick="setCat(this)"><i class="fa-solid fa-border-all"></i> Tout</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-couch"></i> Meubles</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-shirt"></i> Vêtements</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-gamepad"></i> Jouets</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-book-open"></i> Livres</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-laptop"></i> Électronique</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-futbol"></i> Sport</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-seedling"></i> Jardin</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-utensils"></i> Cuisine</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-screwdriver-wrench"></i> Outils</button>
+    <button class="cat-pill"   onclick="setCat(this)"><i class="fa-solid fa-palette"></i> Art</button>
+  </div>
+
+</section>
+
+<%# ── Items grid ── %>
+<div class="items-section">
+  <div class="items-head">
+    <h2 class="items-head-title">Les trésors du moment</h2>
+    <p class="items-head-count">
+      <strong><%= @donations.count %></strong> objets près de vous
+    </p>
+  </div>
+
+  <div class="grid">
+    <%= render partial: "donations/card", collection: @donations, as: :donation %>
+  </div>
+</div>
+
+<script>
+  function setMode(btn) {
+    btn.closest('.bar-mode').querySelectorAll('.mode-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  }
+  function setPill(btn) {
+    btn.closest('.pill-row').querySelectorAll('.pill').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  }
+  function setCat(btn) {
+    document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  }
+</script>

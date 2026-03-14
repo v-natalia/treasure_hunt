@@ -1,0 +1,92 @@
+// ============================================================
+// _variables.scss
+// Design tokens — colors, spacing, radius, shadows, z-index
+// ============================================================
+
+// ── Colors ──────────────────────────────────────────────────
+
+// Brand greens
+$forest  : #2a4a36;
+$moss    : #3d6b4f;
+$sage    : #7aab8a;
+$sage-lt : #c8e0cf;
+
+// Neutrals
+$cream   : #f5f0e8;
+$sand    : #e8dfc8;
+$sand-dk : #d4c9ae;
+$white   : #ffffff;
+
+// Accents
+$clay    : #c4885a;
+$clay-lt : #f2e4d8;
+$amber   : #e8a84c;
+$amber-lt: #fdf3e0;
+
+// Text
+$ink     : #1e2d24;
+$muted   : #6b7d72;
+
+// Condition badge colors
+$cond-new-bg      : #d2edda;
+$cond-new-text    : #1a6631;
+$cond-vgood-bg    : #dff0ea;
+$cond-vgood-text  : #2a6b52;
+$cond-good-bg     : $amber-lt;
+$cond-good-text   : #8a5e1a;
+$cond-fair-bg     : $clay-lt;
+$cond-fair-text   : #7a3d1e;
+
+// Hunter level colors
+$lv-bronze-bg    : #f5e8d8;
+$lv-bronze-text  : #7a5230;
+$lv-silver-bg    : #eaecf0;
+$lv-silver-text  : #505a68;
+$lv-gold-bg      : $amber-lt;
+$lv-gold-text    : #8a5e1a;
+$lv-platinum-bg  : #e8eef8;
+$lv-platinum-text: #2a4270;
+
+// ── Spacing scale ───────────────────────────────────────────
+$space-1 :  .25rem;
+$space-2 :  .5rem;
+$space-3 :  .75rem;
+$space-4 :  1rem;
+$space-5 :  1.25rem;
+$space-6 :  1.5rem;
+$space-8 :  2rem;
+$space-10:  2.5rem;
+$space-12:  3rem;
+$space-16:  4rem;
+$space-20:  5rem;
+
+// ── Border radius ───────────────────────────────────────────
+$radius-sm  :  .5rem;
+$radius-md  :  .85rem;
+$radius-lg  :  1.1rem;
+$radius-xl  :  1.5rem;
+$radius-full:  99px;
+
+// ── Shadows ─────────────────────────────────────────────────
+$shadow-sm : 0 1px  4px rgba(30, 45, 36, .06);
+$shadow-md : 0 4px 16px rgba(30, 45, 36, .08);
+$shadow-lg : 0 12px 36px rgba(30, 45, 36, .11);
+$shadow-xl : 0 24px 60px rgba(30, 45, 36, .13);
+
+// ── Z-index scale ───────────────────────────────────────────
+$z-deco  :   0;
+$z-base  :   1;
+$z-above :  10;
+$z-nav   : 100;
+$z-modal : 200;
+
+// ── Layout ──────────────────────────────────────────────────
+$nav-height  : 64px;
+$max-width   : 1280px;
+$content-pad : $space-12; // 3rem
+
+// ── Transitions ─────────────────────────────────────────────
+$ease         : cubic-bezier(.4, 0, .2, 1);
+$transition-sm: all .15s $ease;
+$transition-md: all .2s  $ease;
+$transition-lg: all .3s  $ease;

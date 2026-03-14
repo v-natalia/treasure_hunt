@@ -1,1 +1,34 @@
 // Specific CSS for your home-page
+// ============================================================
+// pages/home.scss
+// Homepage stylesheet — imports all partials in order
+// ============================================================
+//
+// Structure:
+//   app/assets/stylesheets/
+//   ├── _fonts.scss           ← font imports & type scale
+//   ├── _variables.scss       ← design tokens
+//   ├── _base.scss            ← reset & base elements
+//   └── pages/
+//       └── home/
+//           ├── _background.scss  ← decorative circle
+//           ├── _navbar.scss      ← navigation bar
+//           ├── _hero.scss        ← hero title & subtitle
+//           ├── _filters.scss     ← filter bar & categories
+//           └── _cards.scss       ← item grid & card component
+//
+// In Rails, link this file from your layout:
+//   <%= stylesheet_link_tag "pages/home" %>
+// ============================================================
+
+// ── Globals ─────────────────────────────────────────────────
+@import '../config/fonts';
+@import '../config/variables';
+@import '../config/base';
+
+// ── Home page partials ───────────────────────────────────────
+@import 'home/background';
+@import 'home/navbar';
+@import 'home/hero';
+@import 'home/filters';
+@import 'home/cards';

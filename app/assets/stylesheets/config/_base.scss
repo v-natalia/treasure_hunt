@@ -1,0 +1,64 @@
+// ============================================================
+// _base.scss
+// Reset, body, base element styles
+// ============================================================
+
+@use 'variables' as *;
+@use 'fonts' as *;
+
+// ── Reset ───────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+// ── Body ────────────────────────────────────────────────────
+body {
+  font-family: $font-sans;
+  font-weight: $fw-regular;
+  background: $cream;
+  color: $ink;
+  line-height: $leading-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+}
+
+// ── Elements ────────────────────────────────────────────────
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: $font-sans;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// ── Animations ──────────────────────────────────────────────
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

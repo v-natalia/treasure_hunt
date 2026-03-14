@@ -1,0 +1,58 @@
+<%# app/views/donations/_cards.html.erb %>
+
+<div class="card">
+
+  <%# ── Image ── %>
+  <div class="card-img">
+    <% if donation.photos.attached? %>
+      <%= image_tag donation.photos.first, alt: donation.name %>
+    <% else %>
+      <i class="<%= category_icon(donation.category) %>"></i>
+    <% end %>
+    <span class="card-cond <%= condition_class(donation.condition) %>">
+      <%= t("conditions.#{donation.condition}") %>
+    </span>
+    <% if user_signed_in? %>
+      <button class="card-save">
+        <i class="fa-<%= current_user.bookmarked?(donation) ? "solid" : "regular" %> fa-bookmark"></i>
+      </button>
+    <% end %>
+  </div>
+
+  <%# ── Body ── %>
+  <div class="card-body">
+
+    <div class="card-meta">
+      <span class="card-cat">
+        <i class="<%= category_icon(donation.category) %>"></i>
+        <%= t("categories.#{donation.category}") %>
+      </span>
+      <span class="card-dist">
+        <i class="fa-solid fa-location-dot"></i>
+        <%= distance_in_km(donation) %>
+      </span>
+    </div>
+
+    <h3 class="card-title"><%= donation.name %></h3>
+
+    <p class="card-desc"><%= truncate(donation.description, length: 80) %></p>
+
+    <%# ── Footer ── %>
+    <div class="card-foot">
+      <div class="card-user">
+        <div class="card-av"><%= donation.user.email&.first&.upcase %></div>
+        <div>
+          <span class="card-name"><%= donation.user.email %></span>
+          <!--<span class="card-lvl <%#= hunter_level_class(donation.user.hunter_level) %>">-->
+            <%# if donation.user.hunter_level == "gold" || donation.user.hunter_level == "platinum" %>
+              <i class="fa-solid fa-trophy"></i>
+            <%# end %>
+            <%#= donation.user.hunter_level.capitalize %>
+          </span>
+        </div>
+      </div>
+      <span class="card-age"><%= time_ago_in_words(donation.created_at) %></span>
+    </div>
+
+  </div>
+</div>

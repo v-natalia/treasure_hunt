@@ -14,3 +14,50 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+// ============================================================
+// _fonts.scss
+// Typography — font imports, families & scale
+// ============================================================
+
+// ── Google Fonts ────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
+
+// ── Font Awesome (icons) ────────────────────────────────────
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+// ── Font stacks ─────────────────────────────────────────────
+$font-serif  : 'Cormorant Garamond', Georgia, serif;
+$font-sans   : 'Jost', system-ui, sans-serif;
+$font-mono   : 'Courier New', Courier, monospace;
+
+// ── Font weights ────────────────────────────────────────────
+$fw-light    : 300;
+$fw-regular  : 400;
+$fw-medium   : 500;
+$fw-semibold : 600;
+$fw-bold     : 700;
+
+// ── Type scale ──────────────────────────────────────────────
+$text-xs   : .68rem;   // labels, badges, metadata
+$text-sm   : .78rem;   // secondary body, pills
+$text-base : .875rem;  // base body
+$text-md   : 1rem;     // body copy
+$text-lg   : 1.1rem;   // slightly larger body
+$text-xl   : 1.4rem;   // small headings
+$text-2xl  : 1.6rem;   // section titles
+$text-3xl  : 2rem;     // hero sub-headings
+$text-hero : clamp(3.6rem, 7vw, 6rem); // hero display title
+
+// ── Line heights ────────────────────────────────────────────
+$leading-tight  : .95;
+$leading-snug   : 1.25;
+$leading-normal : 1.6;
+$leading-relaxed: 1.85;
+
+// ── Letter spacing ──────────────────────────────────────────
+$tracking-tight : -.02em;
+$tracking-normal:  0;
+$tracking-wide  :  .08em;
+$tracking-wider :  .12em;
+$tracking-widest:  .18em;

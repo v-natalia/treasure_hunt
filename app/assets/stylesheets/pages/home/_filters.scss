@@ -1,0 +1,278 @@
+// pages/home/_filters.scss
+// Filter bar — mode toggle, condition pills, distance slider,
+// categories strip, search button
+// ============================================================
+
+@use '../../config/variables' as *;
+@use '../../config/fonts' as *;
+
+// ── Filter bar container ────────────────────────────────────
+.filter-bar {
+  width: 100%;
+  max-width: 900px;
+  background: $white;
+  border: 1px solid rgba($forest, .1);
+  border-radius: $radius-xl;
+  padding: $space-6 $space-8;
+  box-shadow: $shadow-lg;
+  margin-bottom: $space-6;
+
+  opacity: 0;
+  animation: fadeUp .5s .34s ease forwards;
+}
+
+// ── Mode toggle (Donner / Chercher) ─────────────────────────
+.bar-mode {
+  display: flex;
+  gap: $space-2;
+  margin-bottom: $space-6;
+}
+
+.mode-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3;
+  border-radius: $radius-md;
+  font-size: $text-base;
+  font-weight: $fw-medium;
+  color: $muted;
+  background: $cream;
+  border: 1.5px solid transparent;
+  transition: $transition-md;
+
+  i {
+    font-size: .9rem;
+  }
+
+  &:hover {
+    color: $forest;
+    background: $sand;
+  }
+
+  // Active state
+  &.on {
+    background: $forest;
+    color: $cream;
+    border-color: $forest;
+    box-shadow: 0 3px 12px rgba($forest, .2);
+
+    i {
+      color: $sage;
+    }
+  }
+}
+
+// ── Divider ─────────────────────────────────────────────────
+.bar-divider {
+  height: 1px;
+  background: rgba($forest, .07);
+  margin: 0 0 $space-6;
+}
+
+// ── Filter row (condition + distance + search) ──────────────
+.bar-row {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr auto;
+  align-items: start;
+  gap: 0;
+}
+
+.bar-sep {
+  background: rgba($forest, .1);
+  width: 1px;
+  height: 100%;
+  min-height: 40px;
+  margin: 0 $space-6;
+}
+
+// ── Individual filter field ──────────────────────────────────
+.bar-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.bar-field-label {
+  font-size: $text-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: $tracking-wider;
+  text-transform: uppercase;
+  color: $muted;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  i {
+    font-size: $text-xs;
+    color: $sage;
+  }
+}
+
+// ── Condition pills ──────────────────────────────────────────
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  padding: .28rem .75rem;
+  border-radius: $radius-full;
+  border: 1px solid rgba($forest, .14);
+  background: $cream;
+  font-size: $text-sm;
+  font-weight: $fw-regular;
+  color: $muted;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: $transition-sm;
+
+  i {
+    font-size: .73rem;
+  }
+
+  &:hover {
+    border-color: $sage;
+    color: $forest;
+  }
+
+  &.on {
+    background: $forest;
+    color: $cream;
+    border-color: $forest;
+    font-weight: $fw-medium;
+  }
+}
+
+// ── Distance slider ──────────────────────────────────────────
+.dist-wrap {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding-top: $space-1;
+}
+
+.dist-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(to right, $forest 17%, $sand 17%);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: $forest;
+    border: 2.5px solid $white;
+    box-shadow: 0 1px 5px rgba($forest, .3);
+    transition: transform .15s;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: $forest;
+    border: 2.5px solid $white;
+    box-shadow: 0 1px 5px rgba($forest, .3);
+  }
+}
+
+.dist-val {
+  font-size: $text-sm;
+  font-weight: $fw-medium;
+  color: $forest;
+  min-width: 38px;
+  text-align: right;
+}
+
+// ── Search button ────────────────────────────────────────────
+.bar-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: $forest;
+  color: $cream;
+  border-radius: 50%;
+  font-size: .9rem;
+  align-self: center;
+  margin-left: $space-6;
+  flex-shrink: 0;
+  transition: $transition-md;
+
+  &:hover {
+    background: $moss;
+    transform: scale(1.06);
+  }
+}
+
+// ── Categories strip ─────────────────────────────────────────
+.cats-strip {
+  display: flex;
+  gap: $space-2;
+  width: 100%;
+  max-width: 900px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  opacity: 0;
+  animation: fadeUp .5s .4s ease forwards;
+}
+
+.cat-pill {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: .38rem 1rem;
+  border-radius: $radius-full;
+  border: 1px solid rgba($forest, .13);
+  background: $white;
+  font-size: $text-sm;
+  font-weight: $fw-regular;
+  color: $muted;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: $transition-sm;
+
+  i {
+    font-size: .78rem;
+  }
+
+  &:hover {
+    border-color: $sage;
+    color: $forest;
+  }
+
+  &.on {
+    background: $forest;
+    color: $cream;
+    border-color: $forest;
+
+    i {
+      color: $sage;
+    }
+  }
+}

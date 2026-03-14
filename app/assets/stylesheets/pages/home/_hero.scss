@@ -1,0 +1,80 @@
+// ============================================================
+// pages/home/_hero.scss
+// Hero section — title, subtitle, eyebrow, actions
+// ============================================================
+
+@use '../../../config/variables' as *;
+@use '../../../config/fonts' as *;
+
+.hero {
+  padding: 130px $content-pad 0;
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: $z-base;
+}
+
+// ── Eyebrow label ───────────────────────────────────────────
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $text-xs;
+  letter-spacing: $tracking-widest;
+  text-transform: uppercase;
+  color: $clay;
+  font-weight: $fw-medium;
+  margin-bottom: $space-8;
+
+  // Decorative lines on each side
+  &::before,
+  &::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: $clay;
+    opacity: .5;
+  }
+
+  // Entrance animation
+  opacity: 0;
+  animation: fadeUp .5s .1s ease forwards;
+}
+
+// ── Display title ───────────────────────────────────────────
+.hero-title {
+  font-family: $font-serif;
+  font-size: $text-hero;
+  font-weight: $fw-semibold;
+  line-height: $leading-tight;
+  color: $forest;
+  letter-spacing: $tracking-tight;
+  margin-bottom: $space-6;
+
+  // Italic clay line
+  em {
+    color: $clay;
+    font-style: italic;
+    display: block;
+  }
+
+  opacity: 0;
+  animation: fadeUp .5s .18s ease forwards;
+}
+
+// ── Subtitle ────────────────────────────────────────────────
+.hero-sub {
+  font-size: $text-md;
+  font-weight: $fw-light;
+  line-height: $leading-relaxed;
+  color: $muted;
+  max-width: 44ch;
+  margin-bottom: $space-10;
+
+  opacity: 0;
+  animation: fadeUp .5s .26s ease forwards;
+}

@@ -1,0 +1,270 @@
+// ============================================================
+// pages/home/_cards.scss
+// Items section — grid layout and card component
+// ============================================================
+
+@use '../../../config/variables' as *;
+@use '../../../config/fonts' as *;
+
+// ── Section wrapper ──────────────────────────────────────────
+.items-section {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: $space-16 $content-pad $space-20;
+  position: relative;
+  z-index: $z-base;
+}
+
+// ── Section header ───────────────────────────────────────────
+.items-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: $space-8;
+  padding-bottom: $space-4;
+  border-bottom: 1px solid rgba($forest, .1);
+}
+
+.items-head-title {
+  font-family: $font-serif;
+  font-size: $text-2xl;
+  font-weight: $fw-semibold;
+  font-style: italic;
+  color: $forest;
+}
+
+.items-head-count {
+  font-size: $text-sm;
+  color: $muted;
+
+  strong {
+    color: $ink;
+    font-weight: $fw-medium;
+  }
+}
+
+// ── Grid ─────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+  gap: $space-5;
+}
+
+// ── Card ─────────────────────────────────────────────────────
+.card {
+  background: $white;
+  border-radius: $radius-lg;
+  border: 1px solid rgba($forest, .08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+  transition: transform .22s $ease, box-shadow .22s $ease;
+
+  // Staggered entrance animations
+  opacity: 0;
+  animation: fadeUp .45s ease forwards;
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// ── Card image ───────────────────────────────────────────────
+.card-img {
+  aspect-ratio: 4 / 3;
+  background: $sand;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // Vintage inner-border detail
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(212, 201, 174, .55);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+
+  i {
+    font-size: 2.6rem;
+    color: $muted;
+    opacity: .4;
+  }
+}
+
+// ── Condition badge ──────────────────────────────────────────
+.card-cond {
+  position: absolute;
+  top: $space-2 + .1rem;
+  left: $space-2 + .1rem;
+  z-index: 1;
+  font-size: .63rem;
+  font-weight: $fw-semibold;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: .18rem $space-3;
+  border-radius: $radius-full;
+
+  &.cn  { background: $cond-new-bg;   color: $cond-new-text;   }
+  &.cvg { background: $cond-vgood-bg; color: $cond-vgood-text; }
+  &.cb  { background: $cond-good-bg;  color: $cond-good-text;  }
+  &.cf  { background: $cond-fair-bg;  color: $cond-fair-text;  }
+}
+
+// ── Bookmark button ───────────────────────────────────────────
+.card-save {
+  position: absolute;
+  top: $space-2 + .1rem;
+  right: $space-2 + .1rem;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba($white, .88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $muted;
+  font-size: .78rem;
+  transition: $transition-sm;
+
+  &:hover {
+    color: $clay;
+  }
+}
+
+// ── Card body ────────────────────────────────────────────────
+.card-body {
+  padding: $space-4 $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2 + .1rem;
+  flex: 1;
+}
+
+// ── Category + distance row ──────────────────────────────────
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-cat {
+  font-size: $text-xs;
+  font-weight: $fw-semibold;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: $moss;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  i { font-size: .68rem; }
+}
+
+.card-dist {
+  font-size: .72rem;
+  color: $muted;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+
+  i {
+    font-size: .66rem;
+    color: $clay;
+  }
+}
+
+// ── Title ─────────────────────────────────────────────────────
+.card-title {
+  font-family: $font-serif;
+  font-size: $text-lg;
+  font-weight: $fw-semibold;
+  color: $ink;
+  line-height: $leading-snug;
+}
+
+// ── Description ──────────────────────────────────────────────
+.card-desc {
+  font-size: $text-sm;
+  color: $muted;
+  line-height: $leading-normal;
+  font-weight: $fw-light;
+  flex: 1;
+}
+
+// ── Footer ───────────────────────────────────────────────────
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $space-3;
+  border-top: 1px solid rgba($forest, .07);
+  margin-top: auto;
+}
+
+// ── User info ─────────────────────────────────────────────────
+.card-user {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.card-av {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: $forest;
+  color: $cream;
+  font-size: .66rem;
+  font-weight: $fw-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba($sage, .4);
+  flex-shrink: 0;
+}
+
+.card-name {
+  font-size: .78rem;
+  font-weight: $fw-medium;
+  color: $ink;
+  display: block;
+}
+
+// ── Hunter level badge ───────────────────────────────────────
+.card-lvl {
+  font-size: .58rem;
+  font-weight: $fw-semibold;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 1px 5px;
+  border-radius: $radius-full;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+
+  &.lv-b { background: $lv-bronze-bg;   color: $lv-bronze-text;   }
+  &.lv-s { background: $lv-silver-bg;   color: $lv-silver-text;   }
+  &.lv-g { background: $lv-gold-bg;     color: $lv-gold-text;     }
+  &.lv-p { background: $lv-platinum-bg; color: $lv-platinum-text; }
+}
+
+// ── Timestamp ────────────────────────────────────────────────
+.card-age {
+  font-size: .7rem;
+  color: $muted;
+}

@@ -1,0 +1,112 @@
+// ============================================================
+// pages/home/_navbar.scss
+// Navigation bar
+// ============================================================
+
+@use '../../../config/variables' as *;
+@use '../../../config/fonts' as *;
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: $z-nav;
+  height: $nav-height;
+  display: flex;
+  align-items: center;
+  padding: 0 $content-pad;
+  background: rgba(245, 240, 232, .96);
+  backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid rgba($forest, .1);
+}
+
+// ── Brand / Logo ────────────────────────────────────────────
+.nav-brand {
+  font-family: $font-serif;
+  font-size: $text-xl;
+  font-weight: $fw-semibold;
+  color: $forest;
+  letter-spacing: -.01em;
+  margin-right: auto;
+
+  em {
+    color: $clay;
+    font-style: italic;
+  }
+}
+
+// ── Search ──────────────────────────────────────────────────
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  background: $sand;
+  border: 1px solid rgba($forest, .12);
+  border-radius: $radius-full;
+  padding: $space-2 $space-5;
+  width: 340px;
+  transition: $transition-md;
+
+  &:focus-within {
+    border-color: $sage;
+    box-shadow: 0 0 0 3px rgba($sage, .14);
+    background: $white;
+  }
+
+  i {
+    color: $muted;
+    font-size: $text-sm;
+    flex-shrink: 0;
+  }
+
+  input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: $text-base;
+    font-family: $font-sans;
+    color: $ink;
+    flex: 1;
+
+    &::placeholder {
+      color: $muted;
+    }
+  }
+}
+
+// ── Actions (right side) ────────────────────────────────────
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin-left: $space-8;
+}
+
+.nav-link {
+  font-size: $text-sm;
+  font-weight: $fw-medium;
+  color: $muted;
+  padding: $space-1 $space-2;
+  transition: $transition-sm;
+  background: transparent;
+
+  &:hover {
+    color: $forest;
+  }
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-5;
+  background: $forest;
+  color: $cream;
+  border-radius: $radius-full;
+  font-size: $text-sm;
+  font-weight: $fw-medium;
+  transition: $transition-md;
+
+  &:hover {
+    background: $moss;
+  }
+}
